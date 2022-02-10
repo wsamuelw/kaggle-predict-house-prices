@@ -49,6 +49,9 @@ predictions <- predict(model_fit, house_test) %>%
 View(predictions)
 
 # evaluation 
+# r2
+yardstick::rsq(predictions, estimate = .pred, truth = SalePrice) # 0.865
+
 # mae
 yardstick::mae(predictions, estimate = .pred, truth = SalePrice) # 18494
 
@@ -56,11 +59,10 @@ yardstick::mae(predictions, estimate = .pred, truth = SalePrice) # 18494
 yardstick::rmse(predictions, estimate = .pred, truth = SalePrice) # 26430
 
 # rmsle
-library(mltools)
-rmsle(predictions$.pred, predictions$SalePrice) # 0.1512431
-
-
-
+library(Metrics)
+Metrics::rmsle(predictions$SalePrice, predictions$.pred) # 0.1512431
+Metrics::rmse(predictions$SalePrice, predictions$.pred) # 26429.85
+Metrics::mae(predictions$SalePrice, predictions$.pred) # 18494.34
 
 # now, apply the model on the test dataset (the unseen data)
 unseen <- full_cleaned %>% 
