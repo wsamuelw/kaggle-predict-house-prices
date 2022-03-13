@@ -1,6 +1,6 @@
 # predict-house-prices
-to predict house prices with regression models
+a quick demo to predict house prices with regression using xgboost and to explain the model with modelStudio
 
-the link to more info
+reference 
 
 https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data
